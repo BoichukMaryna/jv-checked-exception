@@ -1,20 +1,19 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package core.basesyntax;
 
 public class UserService {
-    public void registerUser(User user) {
-        PasswordValidator validator = new PasswordValidator();
-        try {
-            validator.validate(user.getPassword(), user.getRepeatPassword());
-            saveUser(user);
-        } catch (PasswordValidationException e) {
-            System.out.println("Your passwords are incorrect. Try again.");
+    private final PasswordValidator passwordValidator = new PasswordValidator();
 
+    public UserService() {
+    }
+
+    public void registerUser(User user) {
+        try {
+            this.passwordValidator.validate(user.getPassword(), user.getRepeatPassword());
+            this.saveUser(user);
+        } catch (PasswordValidationException var3) {
+            System.out.println("Registration failed: " + var3.getMessage());
         }
+
     }
 
     public void saveUser(User user) {
