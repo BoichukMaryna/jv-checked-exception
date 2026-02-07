@@ -6,7 +6,15 @@
 package core.basesyntax;
 
 public class PasswordValidator {
-    public void validate(String password, String repeatPassword) {
-        //write your code here
+    public PasswordValidator() {
+    }
+
+    public void validate(String password, String repeatPassword)
+            throws PasswordValidationException {
+        if (!password.equals(repeatPassword)) {
+            throw new PasswordValidationException("Passwords do not match");
+        } else if (password.length() < 10) {
+            throw new PasswordValidationException("Password must be at least 10 characters long");
+        }
     }
 }

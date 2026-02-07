@@ -6,8 +6,19 @@
 package core.basesyntax;
 
 public class UserService {
+    private final PasswordValidator passwordValidator = new PasswordValidator();
+
+    public UserService() {
+    }
+
     public void registerUser(User user) {
-        //write your code here
+        try {
+            this.passwordValidator.validate(user.getPassword(), user.getRepeatPassword());
+            this.saveUser(user);
+        } catch (PasswordValidationException var3) {
+            System.out.println("Registration failed: " + var3.getMessage());
+        }
+
     }
 
     public void saveUser(User user) {
