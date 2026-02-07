@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package core.basesyntax;
 
 public class UserService {
@@ -16,12 +11,12 @@ public class UserService {
             this.passwordValidator.validate(user.getPassword(), user.getRepeatPassword());
             this.saveUser(user);
         } catch (PasswordValidationException var3) {
-            System.out.println("Registration failed: " + var3.getMessage());
+            System.out.println("Your passwords are incorrect. Try again.");
         }
 
     }
 
     public void saveUser(User user) {
-        System.out.println("User " + user.toString() + " was saved to database!!!");
+        System.out.println("User " + user + " was saved to database!!!");
     }
 }
